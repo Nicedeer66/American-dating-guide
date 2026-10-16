@@ -1,0 +1,25 @@
+body{font-family:serif;line-height:1.75;color:#24292b}
+h1{color:#1f4e4a;font-size:1.6em;line-height:1.3;margin:1.5em 0 .8em}
+h1 .chno{display:block;font-size:.5em;letter-spacing:.25em;color:#d9774f}
+h1.part{text-align:left;margin-top:30%;font-size:1.9em}
+h2{color:#1f4e4a;font-size:1.2em;border-bottom:1px solid #d8dedc;padding-bottom:.2em;margin-top:1.6em}
+h3{font-size:1.05em;margin-top:1.3em}
+h3::before{content:"■ ";color:#d9774f;font-size:.7em}
+p{margin:.4em 0;text-indent:0}
+blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid #d9774f;background:#fbeee6}
+.chapterlead,.partdesc{color:#6b7275;border-top:1px solid #d8dedc;border-bottom:1px solid #d8dedc;padding:.6em 0;margin-bottom:1.2em}
+.keypoints{background:#e7f0ee;border-left:5px solid #1f4e4a;padding:.6em 1em;margin:1em 0}
+.dialogue{background:#fafbfa;border:1px solid #d8dedc;padding:.8em 1em;margin:1em 0}
+.dialogue p strong{color:#1f4e4a}
+.subtext{display:block;font-size:.85em;color:#7c8584;border-left:2px solid #c9d3d1;padding-left:.6em;margin:.1em 0 .7em .2em}
+.warning{background:#fbeee6;border-left:5px solid #d9774f;padding:.6em 1em;margin:1em 0}
+.warning::before{content:"⚠ 安全提醒";display:block;font-weight:bold;color:#d9774f;margin-bottom:.3em}
+.exercise{border:2px solid #1f4e4a;padding:.6em 1em;margin:1em 0}
+.exercise::before{content:"练习";display:block;font-weight:bold;color:#1f4e4a;letter-spacing:.2em}
+.answer{background:#f3f4f1;padding:.6em 1em;margin:2em 0 1em}
+.answer::before{content:"参考答案与解释";display:block;font-weight:bold;color:#8a6d3b}
+.pitfall strong:first-child{color:#d9774f}
+table{border-collapse:collapse;width:100%;font-size:.85em;margin:1em 0}
+th{background:#1f4e4a;color:#fff;padding:.3em .4em;text-align:left}
+td{border-bottom:1px solid #d8dedc;padding:.3em .4em;vertical-align:top}
+tr:nth-child(even) td{background:#f5f8f7}

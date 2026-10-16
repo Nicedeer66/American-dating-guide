@@ -1,0 +1,114 @@
+/* 《先约会，再确认》 PDF 样式（WeasyPrint） */
+@font-face{font-family:"LatinSerif";src:local("FreeSerif");unicode-range:U+0000-00FF,U+0100-024F,U+2013-2014,U+2026;}
+@font-face{font-family:"LatinSerif";font-weight:bold;src:local("FreeSerif Bold"),local("FreeSerifBold");unicode-range:U+0000-00FF,U+0100-024F,U+2013-2014,U+2026;}
+@font-face{font-family:"LatinSans";src:local("Inter");unicode-range:U+0000-00FF,U+0100-024F;}
+@font-face{font-family:"LatinSans";font-weight:bold;src:local("Inter Bold"),local("Inter SemiBold");unicode-range:U+0000-00FF,U+0100-024F;}
+
+:root{
+  --ink:#24292b; --muted:#6b7275; --main:#1f4e4a; --main-soft:#e7f0ee;
+  --accent:#d9774f; --accent-soft:#fbeee6; --line:#d8dedc; --paper:#ffffff;
+}
+@page{
+  size:148mm 210mm;
+  margin:18mm 15mm 18mm 16mm;
+  @top-left{content:string(booktitle);font:7.5pt "LatinSans","Noto Sans CJK SC";color:#9aa3a2;}
+  @top-right{content:string(chap);font:7.5pt "LatinSans","Noto Sans CJK SC";color:#9aa3a2;}
+  @bottom-center{content:counter(page);font:8pt "LatinSans","Noto Sans CJK SC";color:var(--muted);}
+}
+@page :first{ @top-left{content:none} @top-right{content:none} @bottom-center{content:none} }
+@page cover{margin:0; @top-left{content:none} @top-right{content:none} @bottom-center{content:none}}
+@page plain{ @top-left{content:none} @top-right{content:none} @bottom-center{content:none} }
+@page chapter:first{ @top-left{content:none} @top-right{content:none} }
+@page part{ @top-left{content:none} @top-right{content:none} @bottom-center{content:none}}
+
+html{font-family:"LatinSerif","Noto Serif CJK SC",serif;font-size:10.3pt;line-height:1.72;color:var(--ink);
+  text-align:left;line-break:strict;}
+body{margin:0}
+.booktitle-runner{string-set:booktitle content();display:none}
+
+/* ---------- Cover ---------- */
+.cover{page:cover;width:148mm;height:210mm;position:relative;background:var(--main);overflow:hidden;color:#fff;break-after:page}
+.cover svg{position:absolute;inset:0;width:148mm;height:210mm}
+.cover .ct{position:absolute;left:16mm;right:16mm;top:52mm}
+.cover .kicker{font:500 8.5pt "LatinSans","Noto Sans CJK SC";letter-spacing:.35em;color:#f3c9b3}
+.cover h1.title{font:900 34pt/1.18 "Noto Serif CJK SC";margin:6mm 0 0;letter-spacing:.04em;color:#fff;string-set:none}
+.cover .sub{font:400 10.5pt/1.6 "LatinSans","Noto Sans CJK SC";margin-top:7mm;color:#dbe9e6;max-width:100mm}
+.cover .author{position:absolute;left:16mm;bottom:20mm;font:500 9pt "LatinSans","Noto Sans CJK SC";letter-spacing:.2em;color:#fff}
+
+/* ---------- Title / front ---------- */
+.titlepage{page:plain;height:170mm;display:flex;flex-direction:column;justify-content:center;break-after:page;text-align:left}
+.titlepage .t{font:900 26pt "Noto Serif CJK SC";color:var(--main)}
+.titlepage .s{font:400 10pt "LatinSans","Noto Sans CJK SC";color:var(--muted);margin-top:4mm}
+.titlepage .a{font:500 9.5pt "LatinSans","Noto Sans CJK SC";margin-top:22mm;color:var(--ink)}
+.titlepage .bar{width:18mm;height:2.2mm;background:var(--accent);margin-top:8mm}
+
+/* ---------- TOC ---------- */
+nav#TOC{page:plain;break-after:page}
+nav#TOC::before{content:"目录";display:block;font:900 20pt "Noto Serif CJK SC";color:var(--main);margin:6mm 0 8mm}
+nav#TOC ul{list-style:none;padding:0;margin:0}
+nav#TOC ul ul{display:none}
+nav#TOC li{margin:0}
+nav#TOC a{display:block;color:var(--ink);text-decoration:none;font:400 9.4pt/2 "LatinSans","Noto Sans CJK SC"}
+nav#TOC a::after{content:leader(dotted) target-counter(attr(href), page);color:var(--muted)}
+nav#TOC li.toc-part > a{font-weight:700;color:var(--main);margin-top:3mm;border-bottom:.3pt solid var(--line)}
+nav#TOC li.toc-part > a::after{content:""}
+
+/* ---------- Headings ---------- */
+h1{font-family:"Noto Serif CJK SC";font-weight:900;color:var(--main);break-before:page;page:chapter;
+   font-size:21pt;line-height:1.3;margin:22mm 0 6mm;string-set:chap content();letter-spacing:.01em}
+h1 .chno{display:block;font:700 9pt "LatinSans","Noto Sans CJK SC";letter-spacing:.3em;color:var(--accent);margin-bottom:3mm}
+section.partpage{page:part;break-before:page;break-after:page;padding-top:55mm}
+section.partpage h1.part{page:part;break-before:avoid;margin:0 0 6mm;font-size:26pt;string-set:chap ""}
+h1.part::before{content:"PART";display:block;font:700 8pt "LatinSans","Noto Sans CJK SC";letter-spacing:.5em;color:var(--accent);margin-bottom:4mm}
+.partdesc{font:400 9.5pt/1.8 "LatinSans","Noto Sans CJK SC";color:var(--muted);border-top:1.2mm solid var(--accent);width:90mm;padding-top:4mm}
+h1.frontmatter-page,h1.unnumbered:not(.part){font-size:18pt;margin-top:8mm}
+h2{font:700 12.5pt/1.5 "LatinSans","Noto Sans CJK SC";color:var(--main);margin:8mm 0 3mm;padding-bottom:1.2mm;border-bottom:.6pt solid var(--line);break-after:avoid}
+h3{font:700 10.8pt/1.5 "LatinSans","Noto Sans CJK SC";color:var(--ink);margin:6mm 0 2mm;break-after:avoid}
+h3::before{content:"";display:inline-block;width:2.2mm;height:2.2mm;background:var(--accent);margin-right:2mm;vertical-align:.15em;border-radius:.4mm}
+h4{font:700 10pt "LatinSans","Noto Sans CJK SC";margin:4mm 0 1mm}
+p{margin:0 0 2.4mm;orphans:2;widows:2}
+strong{font-weight:700;color:#1a1f20}
+a{color:var(--main)}
+ul,ol{padding-left:5.5mm;margin:1mm 0 3mm}
+li{margin-bottom:1mm}
+blockquote{margin:4mm 0;padding:3mm 5mm;border-left:1mm solid var(--accent);background:var(--accent-soft);font-family:"LatinSans","Noto Sans CJK SC";color:#5a3a2b}
+blockquote p:last-child{margin:0}
+
+/* ---------- Modules ---------- */
+.chapterlead{font:400 10pt/1.85 "LatinSans","Noto Sans CJK SC";color:var(--muted);border-top:.6pt solid var(--line);border-bottom:.6pt solid var(--line);padding:3mm 0;margin:0 0 6mm}
+.keypoints{background:var(--main-soft);border-left:1.3mm solid var(--main);padding:3.5mm 4.5mm 2mm;border-radius:0 1.5mm 1.5mm 0;margin:2mm 0 4mm}
+.keypoints ol{margin:0;padding-left:5mm}
+.keypoints li::marker{color:var(--main);font-weight:700;font-family:"LatinSans","Noto Sans CJK SC"}
+
+.dialogue{background:#fafbfa;border:.5pt solid var(--line);border-radius:2mm;padding:4mm 5mm 2mm;margin:3mm 0 4mm;
+  font-family:"LatinSerif","Noto Serif CJK SC",serif}
+.dialogue p{margin:0 0 1.2mm;text-align:left}
+.dialogue p strong:first-child{font-family:"LatinSans","Noto Sans CJK SC";color:var(--main);font-size:9pt;letter-spacing:.02em}
+.dialogue .subtext{display:block;font:400 8.3pt/1.65 "LatinSans","Noto Sans CJK SC";color:#7c8584;border-left:.8pt solid #c9d3d1;padding-left:2.5mm;margin:0 0 3mm 1mm}
+.dialogue em{color:var(--muted)}
+.dialogue hr{border:0;border-top:.5pt dashed var(--line);margin:3mm 0}
+
+.warning{background:var(--accent-soft);border-radius:2mm;padding:4mm 5mm 2mm 13mm;margin:3mm 0 4mm;position:relative;font-family:"LatinSans","Noto Sans CJK SC";font-size:9.4pt}
+.warning::before{content:"!";position:absolute;left:4mm;top:4mm;width:5.5mm;height:5.5mm;border-radius:50%;background:var(--accent);color:#fff;
+  font:700 9pt/5.5mm "LatinSans","Noto Sans CJK SC";text-align:center}
+.pitfall p{padding-left:0}
+.pitfall p strong:first-child{color:var(--accent)}
+
+.exercise,.answer{border-radius:2mm;padding:4mm 5mm 2mm;margin:3mm 0 4mm}
+.exercise{border:.8pt solid var(--main)}
+.exercise::before,.answer::before{display:block;font:700 8pt "LatinSans","Noto Sans CJK SC";letter-spacing:.3em;margin-bottom:2mm}
+.exercise::before{content:"练习";color:var(--main)}
+.answer{background:#f3f4f1;break-before:auto;margin-top:8mm;position:relative}
+.answer::before{content:"参考答案与解释";color:#8a6d3b}
+.answer{font-size:9.6pt}
+
+/* ---------- Tables ---------- */
+table{width:100%;border-collapse:collapse;margin:3mm 0 5mm;font:400 8.2pt/1.55 "LatinSans","Noto Sans CJK SC";text-align:left;break-inside:auto}
+thead{display:table-header-group}
+th{background:var(--main);color:#fff;font-weight:700;padding:1.8mm 1.8mm;border:0}
+td{padding:1.6mm 1.8mm;border-bottom:.4pt solid var(--line);vertical-align:top}
+tbody tr:nth-child(even) td{background:#f5f8f7}
+tr{break-inside:avoid}
+
+hr{border:0;border-top:.6pt solid var(--line);margin:5mm 0}
+.unnumbered + .chapterlead{}
