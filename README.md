@@ -6,6 +6,7 @@
 <p align="center">
   <a href="dist/美式恋爱指南.pdf"><b>⬇ 下载 PDF</b></a> ·
   <a href="dist/美式恋爱指南.epub"><b>⬇ 下载 EPUB</b></a> ·
+  <a href="../../releases/latest">Releases v1.0</a> ·
   <a href="dist/美式恋爱指南.md">在线阅读（Markdown）</a>
 </p>
 
@@ -30,7 +31,7 @@
 
 ## 下载
 
-直接下载 `dist/` 目录中的文件：
+在 [Releases v1.0](../../releases/latest) 页面下载，或直接下载 `dist/` 目录中的文件：
 
 - [**PDF**](dist/美式恋爱指南.pdf)：A5 版式，约 350 页，适合手机、平板阅读和打印
 - [**EPUB**](dist/美式恋爱指南.epub)：可在 Apple Books、多看、微信读书等阅读器中打开
