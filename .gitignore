@@ -1,7 +1,5 @@
 dist/book*.md
 dist/book.html
 dist/cover.png
-dist/*.pdf
-dist/*.epub
 src/20-appA.md
 __pycache__/
